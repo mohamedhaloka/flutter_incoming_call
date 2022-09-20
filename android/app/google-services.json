@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "374285777744",
+    "project_id": "flutter-incoming-call",
+    "storage_bucket": "flutter-incoming-call.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374285777744:android:1d214e3052b56e96314a55",
+        "android_client_info": {
+          "package_name": "com.example.flutter_incoming_call"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374285777744-jtgiqhgopon2lalg2l2ghbtbehmr9npc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-TylIxvfSugjFKCfcg30fcddHYEy_-Ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374285777744-jtgiqhgopon2lalg2l2ghbtbehmr9npc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "374285777744-d9en0us8qbei6dka182qej82ll4pvncr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterIncomingCall"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374285777744:android:4c1eb0ef75e6f119314a55",
+        "android_client_info": {
+          "package_name": "com.flutter.incomming_call"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374285777744-jtgiqhgopon2lalg2l2ghbtbehmr9npc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-TylIxvfSugjFKCfcg30fcddHYEy_-Ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374285777744-jtgiqhgopon2lalg2l2ghbtbehmr9npc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "374285777744-d9en0us8qbei6dka182qej82ll4pvncr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterIncomingCall"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

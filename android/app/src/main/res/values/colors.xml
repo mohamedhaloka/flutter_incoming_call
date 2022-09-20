@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="notification_incoming_call_text">#FFFF</color>
+    <color name="notification_incoming_call_accept">#5EB506</color>
+    <color name="notification_incoming_call_decline">#AE0505</color>
+
+    <color name="accept">#4CAF50</color>
+    <color name="accept_ripple">#A6FFA9</color>
+    <color name="decline">#F44336</color>
+    <color name="decline_ripple">#FB8D85</color>
+
+    <color name="action_text">#FFFFFF</color>
+    <color name="ripple_main_color">#80ffffff</color>
+
+</resources>

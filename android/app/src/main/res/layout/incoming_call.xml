@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#212837"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/base_margin_x4"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="@dimen/size_avatar"
+                android:layout_height="@dimen/size_avatar"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_color="#80ffffff"
+                app:civ_border_width="1dp" />
+
+            <TextView
+                android:id="@+id/tvNameCaller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoSizeMaxTextSize="@dimen/size_text_name"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Mohamed Nasr"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/size_text_name"
+                app:autoSizeMaxTextSize="@dimen/size_text_name"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                tools:ignore="MissingPrefix"
+                tools:targetApi="o"
+                tools:text="Caller Name" />
+            <TextView
+                android:id="@+id/remainingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoSizeMaxTextSize="@dimen/size_text_action"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="00:00"
+                android:layout_marginBottom="@dimen/base_margin_x4"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/size_text_action"
+                app:autoSizeMaxTextSize="@dimen/size_text_action"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                tools:ignore="MissingPrefix"
+                tools:targetApi="o"
+                tools:text="Remaining Time" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:id="@+id/blur_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="false"
+                android:background="@drawable/blur_bg"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/app_logo"
+                android:layout_width="116dp"
+                android:layout_height="109dp"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="false"
+                android:background="@mipmap/ic_launcher"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="12dp"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/accept_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:clickable="true"
+                tools:ignore="UseCompoundDrawables"
+                android:focusable="true">
+
+
+                    <ImageView
+                        android:id="@+id/ivDeclineCall"
+                        android:layout_width="@dimen/size_button"
+                        android:layout_height="@dimen/size_button"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/bg_button_accept"
+                        android:padding="@dimen/base_margin_x1_5"
+                        android:src="@drawable/ic_accept"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvDecline"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/ivDeclineCall"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:gravity="center"
+                        android:text="@string/notification_incoming_call_accept"
+                        android:textColor="@color/common_google_signin_btn_text_dark"
+                        android:textSize="@dimen/size_text_action" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="vertical"
+                android:id="@+id/reject_btn"
+                android:clickable="true"
+                tools:ignore="UseCompoundDrawables"
+                android:focusable="true">
+
+
+
+                    <ImageView
+                        android:id="@+id/ivAcceptCall"
+                        android:layout_width="@dimen/size_button"
+                        android:layout_height="@dimen/size_button"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/bg_button_decline"
+                        android:padding="@dimen/base_margin_x1_5"
+                        android:src="@drawable/ic_decline"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvAccept"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/ivAcceptCall"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:gravity="center"
+                        android:text="@string/notification_incoming_call_decline"
+                        android:textColor="@color/common_google_signin_btn_text_dark"
+                        android:textSize="@dimen/size_text_action" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

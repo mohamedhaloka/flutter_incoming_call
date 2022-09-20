@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channel_name">Call Notification</string>
+    <string name="channel_description">Notification for incoming calls</string>
+    <string name="notification_incoming_call_title">Incoming call</string>
+    <string name="notification_incoming_call_accept">Accept</string>
+    <string name="notification_incoming_call_decline">Reject</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="caller_name">Caller Name</string>
+    <string name="caller_image">Caller Image</string>
+</resources>
