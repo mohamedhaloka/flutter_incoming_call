@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -46,18 +47,22 @@ class _MyHomePageState extends State<MyHomePage> {
   String _userAction = 'Unknown user action.';
 
   Future<void> _getUserAction() async {
-    Map<String,dynamic> result = {};
-    try {
-      final data = await platform.invokeMethod('getUserAction');
-      result = Map<String,dynamic>.from(data);
-      log(result.toString());
-      final lastNotificationData = Map<String,dynamic>.from(result['last_notification_data']);
-      log(lastNotificationData.toString());
-    } on PlatformException catch (error) {
-      log(error.message.toString());
-    }
+    log(FirebaseMessaging.instance.getToken().toString());
+    Map<String, dynamic> result = {};
+    if (Platform.isAndroid) {
+      try {
+        final data = await platform.invokeMethod('getUserAction');
+        result = Map<String, dynamic>.from(data);
+        log(result.toString());
+        final lastNotificationData =
+            Map<String, dynamic>.from(result['last_notification_data']);
+        log(lastNotificationData.toString());
+      } on PlatformException catch (error) {
+        log(error.message.toString());
+      }
 
-    setState(() => _userAction = result['user_action']);
+      setState(() => _userAction = result['user_action']);
+    }
   }
 
   @override

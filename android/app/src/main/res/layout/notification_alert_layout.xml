@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
@@ -34,7 +35,8 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="@dimen/base_margin_half"
                 android:textSize="@dimen/base_margin_x1_5"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                tools:ignore="SpUsage" />
             <TextView
                 android:id="@+id/incoming_call"
                 style="@style/TextAppearance.Compat.Notification.Title"
@@ -61,8 +63,7 @@
             android:backgroundTint="@color/notification_incoming_call_accept"
             android:text="@string/notification_incoming_call_accept"
             android:textAllCaps="false"
-            android:textColor="@color/notification_incoming_call_text"
-            android:layout_marginRight="8dp" />
+            android:textColor="@color/notification_incoming_call_text" />
 
         <Button
             android:id="@+id/btnDecline"
@@ -73,7 +74,6 @@
             android:backgroundTint="@color/notification_incoming_call_decline"
             android:text="@string/notification_incoming_call_decline"
             android:textAllCaps="false"
-            android:textColor="@color/notification_incoming_call_text"
-            android:layout_marginLeft="8dp" />
+            android:textColor="@color/notification_incoming_call_text" />
     </LinearLayout>
 </LinearLayout>

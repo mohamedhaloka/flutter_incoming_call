@@ -70,6 +70,7 @@ fun Context.showNotificationWithFullScreen(
         val notification = builder.build()
 
         notify(notificationId, notification)
+        println("notify")
     }
 }
 
@@ -107,7 +108,7 @@ private fun Context.getFullScreenIntent(callerName: String?,
 }
 
 /// Download Image form url and convert it to [Bitmap]
-fun getBitmapFromURL(src: String): Bitmap? {
+private fun getBitmapFromURL(src: String): Bitmap? {
     return try {
         Log.e("src", src)
         val url = URL(src)

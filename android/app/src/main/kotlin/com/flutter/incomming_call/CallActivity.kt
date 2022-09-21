@@ -40,24 +40,12 @@ class CallActivity: FlutterActivity() {
         turnScreenOnAndKeyguardOff()
         setTimerFor60Sec()
         mediaPlayer = MediaPlayer.create(this, R.raw.sound)
-        // get reference to button
-        rejectBtn = findViewById(R.id.reject_btn)
-        acceptBtn = findViewById(R.id.accept_btn)
-        callerName = findViewById(R.id.tvNameCaller)
-        callerImage = findViewById(R.id.ivAvatar)
-        remainingCountDown  = findViewById(R.id.remainingTime)
+        getReferenceOfView()
         listenToButtons()
         deleteNotification()
+        getUserDataFromNotificationData()
         mediaPlayer.start()
         mediaPlayer.isLooping = true
-        getCallStatusFromCallActivity()
-    }
-
-    private  fun getCallStatusFromCallActivity(){
-        val callerNameTxt = intent.getStringExtra(CALLER_NAME)
-        val callerImageTxt = intent.getStringExtra(CALLER_IMAGE)
-        callerName.text = callerNameTxt
-        Glide.with(this).load(callerImageTxt).into(callerImage)
     }
 
     override fun onDestroy() {
@@ -67,6 +55,21 @@ class CallActivity: FlutterActivity() {
         mediaPlayer.stop()
         timer?.cancel()
         turnScreenOffAndKeyguardOn()
+    }
+
+    private  fun getUserDataFromNotificationData(){
+        val callerNameTxt = intent.getStringExtra(CALLER_NAME)
+        val callerImageTxt = intent.getStringExtra(CALLER_IMAGE)
+        callerName.text = callerNameTxt
+        Glide.with(this).load(callerImageTxt).into(callerImage)
+    }
+
+    private fun getReferenceOfView(){
+        rejectBtn = findViewById(R.id.reject_btn)
+        acceptBtn = findViewById(R.id.accept_btn)
+        callerName = findViewById(R.id.tvNameCaller)
+        callerImage = findViewById(R.id.ivAvatar)
+        remainingCountDown  = findViewById(R.id.remainingTime)
     }
 
     private fun listenToButtons() {

@@ -14,17 +14,18 @@ import android.util.Log
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun handleIntent(intent: Intent) {
         val mBundle = intent.extras ?: return
-        Utils.data = Utils.convertBundleToMap(mBundle)
+//        Utils.data = Utils.convertBundleToMap(mBundle)
         Log.w("Notification data: ",mBundle.toString())
         val type = mBundle.getString("type")
 
-        if(type == "1"){
-            // Show normal notification come from firebase
-            super.handleIntent(intent)
+
+        if(type == "2"){
+            // Show call notification
+            showNotification(intent)
             return
         }
-        //otherwise show call notification
-        showNotification(intent)
+        //otherwise show normal notification come from firebase
+        super.handleIntent(intent)
     }
 
     override fun onNewToken(token: String) {
