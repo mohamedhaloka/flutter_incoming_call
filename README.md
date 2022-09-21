@@ -92,7 +92,7 @@ Add the following dependencies for your app
 ##### A simplified explanation of what the basic files of the application contain
 -- `MainActivity.kt`
 When you run a flutter app, this page is called as the main page in the application, it's contain :
-```kotlen
+```Kotlin
         // channel that allow us to connect between flutter app and native android app
         override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine)
         // when user click accept or reject from call activity we send user action to main activity to send it to flutter app
@@ -107,7 +107,7 @@ When you run a flutter app, this page is called as the main page in the applicat
 
 -- `CallActivity.kt`
 The strength of the application on this page will also be explained by the following..
-```kotlen
+```Kotlin
         // after timer is ended the call is rejected
         setTimerFor60Sec()
         // work with buttons and caller text and image
@@ -125,7 +125,7 @@ The strength of the application on this page will also be explained by the follo
 -- `ActivityUtils.kt`
 When the phone screen is off, these functions do their job
 When the screen is off and a communication notification comes, the application will go to the contact page and automatically turn on the Shah via `fun Activity.turnScreenOnAndKeyguardOff()`
-```kotlen
+```Kotlin
         // for turn on screen
         fun Activity.turnScreenOnAndKeyguardOff()
         // for turn off screen
@@ -134,7 +134,7 @@ When the screen is off and a communication notification comes, the application w
 
 -- `MyFirebaseMessagingService.kt`
 Here you can get notifications and act on them
-```kotlen
+```Kotlin
         // this function listen for a new notification
         override fun handleIntent(intent: Intent)
         // this function listen for a new FCM Token 
@@ -147,7 +147,7 @@ Here you can get notifications and act on them
 
 -- `NotificationUtils.kt`
 This file contains some important functions that show the notification or the call page and other functions that help us to make the notification.
-```kotlen
+```Kotlin
         // This function creates and shows the notification
         fun Context.showNotificationWithFullScreen(title: String,
                                                     description: String,

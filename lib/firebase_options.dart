@@ -53,7 +53,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '374285777744',
     projectId: 'flutter-incoming-call',
     storageBucket: 'flutter-incoming-call.appspot.com',
-    iosClientId: '374285777744-d9en0us8qbei6dka182qej82ll4pvncr.apps.googleusercontent.com',
+    iosClientId:
+        '374285777744-d9en0us8qbei6dka182qej82ll4pvncr.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterIncomingCall',
   );
 }

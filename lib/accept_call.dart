@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class AcceptCallScreen extends StatelessWidget {
   const AcceptCallScreen({Key? key}) : super(key: key);
 
@@ -9,12 +8,12 @@ class AcceptCallScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Accept'),
-
       ),
-      body:const Center(
-        child: Text('Accept Call',style: TextStyle(
-          fontSize: 40
-        ),),
+      body: const Center(
+        child: Text(
+          'Accept Call',
+          style: TextStyle(fontSize: 40),
+        ),
       ),
     );
   }
