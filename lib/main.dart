@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _userAction = 'Unknown user action.';
 
   Future<void> _getUserAction() async {
-    log(FirebaseMessaging.instance.getToken().toString());
+    print(await FirebaseMessaging.instance.getToken());
     Map<String, dynamic> result = {};
     if (Platform.isAndroid) {
       try {

@@ -14,14 +14,13 @@ import android.util.Log
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun handleIntent(intent: Intent) {
         val mBundle = intent.extras ?: return
-//        Utils.data = Utils.convertBundleToMap(mBundle)
+        Utils.data = Utils.convertBundleToMap(mBundle)
         Log.w("Notification data: ",mBundle.toString())
+
         val type = mBundle.getString("type")
-
-
         if(type == "2"){
             // Show call notification
-            showNotification(intent)
+            showCallNotification(intent)
             return
         }
         //otherwise show normal notification come from firebase
@@ -33,7 +32,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(token)
     }
 
-    private fun showNotification(intent: Intent) {
+    private fun showCallNotification(intent: Intent) {
         if(!isAppIsInBackground(applicationContext)) return
 
         val mBundle = intent.extras ?: return

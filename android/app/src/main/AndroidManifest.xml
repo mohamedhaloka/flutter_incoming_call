@@ -56,7 +56,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="call_notification" />
+            android:value="@string/channel_id" />
 
         <service
             android:name=".services.MyFirebaseMessagingService"
