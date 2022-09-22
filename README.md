@@ -61,6 +61,11 @@ Add the following dependencies for your app
             </intent-filter>
         </service>
 ```
+- Permissions:
+  -- Add the following permissions to allow app to allow network in release version.
+```xml
+        <uses-permission android:name="android.permission.INTERNET" />
+```
 - Register Activity:
   -- Add CallActivity [Page]
 ```xml
