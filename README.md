@@ -17,8 +17,8 @@ Before anything else, I would like you to watch this video to see the power of t
 - getting the data about last call.
 - some customizations according to your app needs (ringtone, icon)
 
-<img src="https://www.raed.net/img?id=119745" width="270" height="550">
-<img src="https://www.raed.net/img?id=119746" width="270" height="550">
+<kbd><img src="https://b.top4top.io/p_2456wzeqs1.png" width="270" height="550"/></kbd>
+<kbd><img src="https://c.top4top.io/p_2456hqzol2.png" width="270" height="550"/></kbd>
 
 ## _Configure Your Project_
 This plugin doesn't require complicated configs, just connect your flutter app with firebase app project and do the next simple actions:
@@ -180,19 +180,18 @@ In order for this package to work with your notifications, I want you to make ve
   -- When sending a notification by firebase, the data json must contain `caller_name` and `caller_image` in case the notification is a call, as here..
 ```json
         {
-               'notification': {
-                 'body': 'call from ali',
-                 'title': 'click to answer'
-               },
-               'priority': 'high',
-               'data': {
-                 'click_action': 'FLUTTER_NOTIFICATION_CLICK',
-                 'type': '2',
-                 'caller_name': 'Mohamed Nasr',
-                 'caller_image': 'https://www.placehold...'
-               },
-               'to': 'dpsksQl..',
-            
+           "notification": {
+             "body": "call from ali",
+             "title": "click to answer"
+           },
+           "priority": "high",
+           "data": {
+             "click_action": "FLUTTER_NOTIFICATION_CLICK",
+             "type": "2",
+             "caller_name": "Mohamed Nasr",
+             "caller_image": "https://www.placehold..."
+           },
+           "to": "dpsksQl.."         
         }
 ```
 As you can see, the data json contains `caller_name` as well as `caller_image` and also the `type` and it is very important to specify the type of notification, whether it is a normal notification or a call notification, and at the end `click_action` so that the user can click on the notification in case the application is terminated.
