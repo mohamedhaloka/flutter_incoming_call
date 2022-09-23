@@ -105,6 +105,7 @@ Add the following dependencies for your app
 - copy drawable and drawable-v21 folders for UI. **buttons and logo**
 - create folder `res` and add your notification sound and call it `sound.mp3`
 
+## _The simplest code you can see to implement this feature_ 🫡 🖤
 ### Code
 - copy all the files at path `your_app/android/app/src/main/kotlen/app-package-name/`
 - don't forget to change `package com.flutter.incomming_call` or any `import com.flutter.incomming_call.<file>` in all files to your app package name
