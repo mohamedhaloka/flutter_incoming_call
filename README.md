@@ -20,16 +20,34 @@ Before anything else, I would like you to watch this video to see the power of t
 <kbd><img src="https://b.top4top.io/p_2456wzeqs1.png" width="270" height="550"/></kbd>
 <kbd><img src="https://c.top4top.io/p_2456hqzol2.png" width="270" height="550"/></kbd>
 
+---
 ## _Configure Your Project_
 This plugin doesn't require complicated configs, just connect your flutter app with firebase app project and do the next simple actions:
 
 ### Firebase app
 - open android module inside project in android studio to work with it as android project.
 - add the Google services config file `google-services.json` by path `your_app/android/app/`.
+- add next string at the end of your build.gradle file by path `your_app/android/build.gradle`:
+```
+dependencies {
+    classpath 'com.google.gms:google-services:4.3.10'
+    ...
+    }
+```
 - add next string at the end of your build.gradle file by path `your_app/android/app/build.gradle`:
 
 ```
 apply plugin: 'com.google.gms.google-services'
+```
+
+- add set this:
+```
+defaultConfig {
+        ...
+        minSdkVersion 20
+        ...
+        multiDexEnabled true
+        }
 ```
 
 ### Dependencies
@@ -62,9 +80,12 @@ Add the following dependencies for your app
         </service>
 ```
 - Permissions:
-  -- Add the following permissions to allow app to allow network in release version.
+  -- Add the following permissions.
 ```xml
+        // allow app to use network in release version
         <uses-permission android:name="android.permission.INTERNET" />
+        // allow app for showing full screen [Call Activity] when user click the notification or when phone screen is turn off
+        <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 ```
 - Register Activity:
   -- Add CallActivity [Page]
@@ -92,7 +113,8 @@ Add the following dependencies for your app
 - copy drawable and drawable-v21 folders for UI. **buttons and logo**
 - create folder `res` and add your notification sound and call it `sound.mp3`
 
-### Code
+## _The simplest code you can see to implement this feature_ 🫡 🖤
+### Code - [Native Side]
 - copy all the files at path `your_app/android/app/src/main/kotlen/app-package-name/`
 - don't forget to change `package com.flutter.incomming_call` or any `import com.flutter.incomming_call.<file>` in all files to your app package name
 
@@ -242,6 +264,30 @@ As you can see, the data json contains `caller_name` as well as `caller_image` a
 
 - Want to change notification channel details (Id, name, description) ?
   You can do this with the `string.xml` and `Utils.kt`.
+
+### Code - [Flutter Side]
+- When the user presses Agree or Reject, whether from the call notification or the call page, he will be automatically directed to `MainActivity.kt`, from which the application will relaunch again.
+
+- All you have to do here is call this function, which allows you to know if the user has agreed to the call or not, and also to know the details of the latest notification in full.
+
+```dart
+    Map<String, dynamic> result = {};
+    if (Platform.isAndroid) {
+      try {
+        final data = await platform.invokeMethod('getUserAction');
+        // result is map contain the answer of user and latest notification data
+        result = Map<String, dynamic>.from(data);
+        // answer of user
+        log(result['user_action']);
+        final lastNotificationData =
+            Map<String, dynamic>.from(result['last_notification_data']);
+        // latest notification data, to see if a notification is a call notification or not
+        log(lastNotificationData.toString());
+      } on PlatformException catch (error) {
+        log(error.message.toString());
+      }
+    }
+```
 
 ---
 **And here you have reached the end and you can try the notifications as described .. I hope you have benefited and if you want to inquire about something, you can contact me.**
