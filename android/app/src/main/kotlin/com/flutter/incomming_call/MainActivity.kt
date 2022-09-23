@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.NonNull
+import com.flutter.incomming_call.services.CALL_NOTIFICATION_DATA
 import com.flutter.incomming_call.services.NOTIFICATION_ID
 import com.flutter.incomming_call.services.Utils
 import com.google.firebase.messaging.FirebaseMessaging
@@ -46,6 +47,10 @@ class MainActivity: FlutterActivity() {
     }
 
     private  fun getCallStatusFromCallActivity(){
+        val mBundle = intent.getBundleExtra(CALL_NOTIFICATION_DATA)
+        if(mBundle != null){
+            Utils.data = Utils.convertBundleToMap(mBundle)
+        }
         message = intent.getStringExtra(CALL_STATUS).toString()
     }
 

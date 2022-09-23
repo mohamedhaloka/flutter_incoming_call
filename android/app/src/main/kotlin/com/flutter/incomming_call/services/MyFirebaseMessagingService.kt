@@ -14,7 +14,7 @@ import android.util.Log
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun handleIntent(intent: Intent) {
         val mBundle = intent.extras ?: return
-        Utils.data = Utils.convertBundleToMap(mBundle)
+//        Utils.data = Utils.convertBundleToMap(mBundle)
         Log.w("Notification data: ",mBundle.toString())
 
         val type = mBundle.getString("type")
@@ -45,10 +45,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         intent.putExtra(CALLER_NAME,callerName)
         intent.putExtra(CALLER_IMAGE,callerImage)
+        intent.putExtra(CALL_NOTIFICATION_DATA,mBundle)
 
 
         if (body != null && title != null) {
-            showNotificationWithFullScreen(title,body,callerName,callerImage)
+            showNotificationWithFullScreen(title,body,callerName,mBundle,callerImage)
         }
     }
 

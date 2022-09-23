@@ -45,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform = MethodChannel('call_action');
 
   String _userAction = 'Unknown user action.';
+  Map<String, dynamic> lastNotificationData = {};
 
   Future<void> _getUserAction() async {
     print(await FirebaseMessaging.instance.getToken());
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         final data = await platform.invokeMethod('getUserAction');
         result = Map<String, dynamic>.from(data);
         log(result.toString());
-        final lastNotificationData =
+        lastNotificationData =
             Map<String, dynamic>.from(result['last_notification_data']);
         log(lastNotificationData.toString());
       } on PlatformException catch (error) {
@@ -75,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       FirebaseMessaging.onMessageOpenedApp.listen((message) {
         log('onMessageOpenedApp Listen: ${message.data}');
+
         if (_userAction == 'Accept') {
           Navigator.push(context,
               MaterialPageRoute(builder: (_) => const AcceptCallScreen()));
@@ -93,19 +95,21 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'User action status..',
-            ),
-            Text(
-              _userAction,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          const Text(
+            'User action status..',
+          ),
+          Text(
+            _userAction,
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            lastNotificationData.toString(),
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _getUserAction,

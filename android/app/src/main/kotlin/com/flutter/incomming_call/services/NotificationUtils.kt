@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.RingtoneManager
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
@@ -24,19 +25,21 @@ import kotlin.random.Random
 const val CALLER_NAME= "CALLER_NAME"
 const val CALLER_IMAGE= "CALLER_IMAGE"
 const val NOTIFICATION_ID= "NOTIFICATION_ID"
+const val CALL_NOTIFICATION_DATA= "CALL_NOTIFICATION_DATA"
 
 fun Context.showNotificationWithFullScreen(
     title: String,
     description: String,
     callerName: String?,
+    bundle: Bundle,
     callerImage: String?) {
     val notificationId = Random.nextInt(1000)
     val icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
 
     val notificationLayout = RemoteViews(applicationContext.packageName, R.layout.notification_alert_layout)
 
-    val acceptPendingIntent = btnIntent(this,notificationId,"Accept",0)
-    val rejectPendingIntent = btnIntent(this,notificationId,"Reject",1)
+    val acceptPendingIntent = btnIntent(this,notificationId,"Accept",0,bundle)
+    val rejectPendingIntent = btnIntent(this,notificationId,"Reject",1,bundle)
     notificationLayout.setOnClickPendingIntent(R.id.btnAccept, acceptPendingIntent)
     notificationLayout.setOnClickPendingIntent(R.id.btnDecline, rejectPendingIntent)
 
@@ -60,7 +63,7 @@ fun Context.showNotificationWithFullScreen(
         .setTimeoutAfter(60000)
         .setPriority(NotificationCompat.PRIORITY_HIGH)
         .setCustomContentView(notificationLayout)
-        .setFullScreenIntent(getFullScreenIntent(callerName,callerImage,notificationId), true)
+        .setFullScreenIntent(getFullScreenIntent(callerName,callerImage,notificationId,bundle), true)
 
 
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -70,15 +73,16 @@ fun Context.showNotificationWithFullScreen(
         val notification = builder.build()
 
         notify(notificationId, notification)
-        println("notify")
     }
 }
 
-private fun btnIntent(context: Context, notificationId: Int, callStatus: String, requestCode:Int ):PendingIntent{
+private fun btnIntent(context: Context, notificationId: Int, callStatus: String, requestCode:Int ,bundle: Bundle):PendingIntent{
     val intent = Intent(context,MainActivity::class.java).apply {
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         putExtra(NOTIFICATION_ID,notificationId)
         putExtra(CALL_STATUS, callStatus)
+        putExtra(CALL_NOTIFICATION_DATA,bundle)
+
     }
     var intentFlagType = PendingIntent.FLAG_CANCEL_CURRENT
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -92,13 +96,15 @@ private fun btnIntent(context: Context, notificationId: Int, callStatus: String,
 /** It show when phone screen turn off */
 private fun Context.getFullScreenIntent(callerName: String?,
                                         callerImage: String?,
-                                        notificationId: Int?): PendingIntent {
+                                        notificationId: Int?,
+bundle: Bundle): PendingIntent {
     val destination = CallActivity::class.java
 
     val intent = Intent(this, destination).apply {
         putExtra(NOTIFICATION_ID,notificationId)
         putExtra(CALLER_NAME,callerName)
         putExtra(CALLER_IMAGE,callerImage)
+        putExtra(CALL_NOTIFICATION_DATA,bundle)
     }
     var intentFlagType = PendingIntent.FLAG_ONE_SHOT
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

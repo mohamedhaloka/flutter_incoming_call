@@ -13,10 +13,7 @@ import android.os.CountDownTimer
 import android.view.KeyEvent
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.flutter.incomming_call.services.CALLER_IMAGE
-import com.flutter.incomming_call.services.CALLER_NAME
-import com.flutter.incomming_call.services.turnScreenOffAndKeyguardOn
-import com.flutter.incomming_call.services.turnScreenOnAndKeyguardOff
+import com.flutter.incomming_call.services.*
 
 class CallActivity: FlutterActivity() {
     private val acceptStatue = "Accept"
@@ -58,6 +55,10 @@ class CallActivity: FlutterActivity() {
     }
 
     private  fun getUserDataFromNotificationData(){
+        val mBundle = intent.getBundleExtra(CALL_NOTIFICATION_DATA)
+        if(mBundle != null){
+            Utils.data = Utils.convertBundleToMap(mBundle)
+        }
         val callerNameTxt = intent.getStringExtra(CALLER_NAME)
         val callerImageTxt = intent.getStringExtra(CALLER_IMAGE)
         callerName.text = callerNameTxt
