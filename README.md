@@ -82,9 +82,9 @@ Add the following dependencies for your app
 - Permissions:
   -- Add the following permissions.
 ```xml
-        // allow app to use network in release version
+        <!--allow app to use network in release version-->
         <uses-permission android:name="android.permission.INTERNET" />
-        // allow app for showing full screen [Call Activity] when user click the notification or when phone screen is turn off
+        <!--allow app for showing full screen [Call Activity] when user click the notification or when phone screen is turn off-->
         <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 ```
 - Register Activity:
