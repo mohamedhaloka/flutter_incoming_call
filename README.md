@@ -20,6 +20,7 @@ Before anything else, I would like you to watch this video to see the power of t
 <kbd><img src="https://b.top4top.io/p_2456wzeqs1.png" width="270" height="550"/></kbd>
 <kbd><img src="https://c.top4top.io/p_2456hqzol2.png" width="270" height="550"/></kbd>
 
+---
 ## _Configure Your Project_
 This plugin doesn't require complicated configs, just connect your flutter app with firebase app project and do the next simple actions:
 
