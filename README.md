@@ -26,10 +26,22 @@ This plugin doesn't require complicated configs, just connect your flutter app w
 ### Firebase app
 - open android module inside project in android studio to work with it as android project.
 - add the Google services config file `google-services.json` by path `your_app/android/app/`.
+- add next string at the end of your build.gradle file by path `your_app/android/build.gradle`:
+```
+dependencies {
+    classpath 'com.google.gms:google-services:4.3.10'
+    ...
+    }
+```
 - add next string at the end of your build.gradle file by path `your_app/android/app/build.gradle`:
 
 ```
 apply plugin: 'com.google.gms.google-services'
+```
+
+- add set this:
+```
+minSdkVersion 20
 ```
 
 ### Dependencies
