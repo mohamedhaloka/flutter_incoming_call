@@ -42,7 +42,12 @@ apply plugin: 'com.google.gms.google-services'
 
 - add set this:
 ```
-minSdkVersion 20
+defaultConfig {
+        ...
+        minSdkVersion 20
+        ...
+        multiDexEnabled true
+        }
 ```
 
 ### Dependencies
